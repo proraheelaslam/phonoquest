@@ -1,0 +1,51 @@
+name: phonoquest_signup_flow
+description: PhonoQuest signup flow only
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.2.3   # 👈 add this
+  google_fonts: ^6.2.1
+  http: ^1.2.2
+  shared_preferences: ^2.3.3
+  just_audio: ^0.9.46
+  image_picker: ^1.1.2
+  firebase_core: ^3.13.0
+  firebase_messaging: ^15.2.5
+  flutter_local_notifications: ^18.0.1
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+# Launcher icons — regenerate with: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/images/app_icon.png
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: assets/images/app_icon.png
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: assets/images/app_icon.png
+    background_color: "#000000"
+    theme_color: "#53C8C1"
+

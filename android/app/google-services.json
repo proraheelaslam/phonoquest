@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "947246295715",
+    "project_id": "phonoquest-7d1a7",
+    "storage_bucket": "phonoquest-7d1a7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947246295715:android:9027b22c61547a684fed16",
+        "android_client_info": {
+          "package_name": "com.phonoquest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWyGKQl-oc3blRxTVankfaFr3fvw8R4vE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
