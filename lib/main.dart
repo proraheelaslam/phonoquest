@@ -11,12 +11,17 @@ import 'core/theme/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  runApp(const PhonoQuestApp());
+
+  // Do not block the first frame on APNs/FCM. On TestFlight devices this can
+  // be slow or fail before the app UI has rendered, which looks like a white screen.
   try {
-    await PushNotificationService.instance.initialize();
+    await PushNotificationService.instance
+        .initialize()
+        .timeout(const Duration(seconds: 8));
   } catch (e, st) {
     debugPrint('PushNotificationService init skipped: $e\n$st');
   }
-  runApp(const PhonoQuestApp());
 }
 
 class PhonoQuestApp extends StatefulWidget {

@@ -9,7 +9,6 @@ import '../../../../core/network/api_exception.dart';
 import '../../../../core/notifications/push_notification_service.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/router/auth_navigation.dart';
-import '../../../../shared/constants/app_assets.dart';
 import '../../../settings/data/repositories/profile_repository.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -73,22 +72,71 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.asset(
-            AppAssets.splashBg,
-            fit: BoxFit.cover,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFFE9FBF9),
+              Color(0xFFFFFFFF),
+            ],
           ),
-          Center(
-            child: Image.asset(
-              AppAssets.splashLogo,
-              width: 260,
-              height: 260,
-              fit: BoxFit.contain,
+        ),
+        child: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 132,
+                  height: 132,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF53C8C1),
+                    borderRadius: BorderRadius.circular(32),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0x3353C8C1),
+                        blurRadius: 24,
+                        offset: Offset(0, 12),
+                      ),
+                    ],
+                  ),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'PQ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 44,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 1.5,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                const Text(
+                  'PhonoQuest',
+                  style: TextStyle(
+                    color: Color(0xFF172B4D),
+                    fontSize: 32,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Phonics learning adventures',
+                  style: TextStyle(
+                    color: Color(0xFF5E6C84),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

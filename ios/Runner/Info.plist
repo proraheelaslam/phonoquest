@@ -56,5 +56,7 @@
 	<string>PhonoQuest needs photo library access so you can choose a profile photo.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>PhonoQuest uses the microphone for speech and phonics practice activities.</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>

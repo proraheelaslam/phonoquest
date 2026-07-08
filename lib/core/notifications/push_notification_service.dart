@@ -16,6 +16,8 @@ import 'notification_navigation.dart';
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (defaultTargetPlatform == TargetPlatform.iOS) return;
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   try {
@@ -52,6 +54,12 @@ class PushNotificationService {
     if (_initialized) return;
     if (kIsWeb) {
       debugPrint('PushNotificationService: web platform — push notifications skipped');
+      _initialized = true;
+      return;
+    }
+
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      debugPrint('PushNotificationService: iOS Firebase Messaging disabled');
       _initialized = true;
       return;
     }
