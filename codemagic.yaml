@@ -1,4 +1,36 @@
 workflows:
+  # Use THIS workflow in Codemagic (not the Workflow Editor "Default Workflow").
+  default-workflow:
+    name: Default Workflow (YAML)
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: PhonoQuest Build
+    environment:
+      flutter: stable
+      xcode: latest
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.phonoquest
+    scripts:
+      - name: Install dependencies
+        script: |
+          flutter pub get
+          cd ios && pod install
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles --project ios/Runner.xcodeproj
+      - name: Building Android
+        script: flutter build appbundle --release
+      - name: Building iOS
+        script: flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/**/outputs/**/*.aab
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+
   ios-testflight:
     name: iOS TestFlight
     max_build_duration: 60
@@ -19,7 +51,7 @@ workflows:
       - name: Set up code signing settings on Xcode project
         script: xcode-project use-profiles --project ios/Runner.xcodeproj
       - name: Build IPA for App Store
-        script: flutter build ipa --release --export-options-plist=$HOME/export_options.plist
+        script: flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
